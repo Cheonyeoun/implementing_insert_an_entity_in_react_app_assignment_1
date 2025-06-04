@@ -1,14 +1,22 @@
 // src/components/Home.jsx
 
-import React from "react";
 import BookCard from "./components/BookCard";
-import books from "./booksData";
-import "./Home.css"; // Import the CSS for styling
+import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({books}) => {
+  const navigate = useNavigate(); 
+
   return (
     <div className="home-container">
-      <h1>Book Library</h1>
+      <div>
+          <h1>Book Library</h1>
+          <div className="flex justify-end mt-3">
+            <button onClick={() => navigate('/addbook')} className="bg-amber-100 rounded-sm p-2 text-black ">Add Book</button>
+          </div>
+      </div>
+      
+
       <div className="books-grid">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
